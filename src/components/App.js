@@ -95,7 +95,7 @@ export default function App() {
     0
   );
 
-  useEffect(function () {
+  useEffect(() => {
     // fetch("http://localhost:8000/questions")
     fetch("/.netlify/functions/questions")
       .then((res) => res.json())
