@@ -95,12 +95,25 @@ export default function App() {
     0
   );
 
+  // useEffect(() => {
+  //   // fetch("http://localhost:8000/questions")
+  //   fetch("/.netlify/functions/questions")
+  //     .then((res) => res.json())
+  //     .then((data) => dispatch({ type: "dataReceived", payload: data }))
+  //     .catch((err) => dispatch({ type: "dataFailed" }));
+  // }, []);
   useEffect(() => {
     // fetch("http://localhost:8000/questions")
-    fetch("/.netlify/functions/questions.js")
+    fetch("/.netlify/functions/questions")
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
-      .catch((err) => dispatch({ type: "dataFailed" }));
+      .then((data) => {
+        console.log("Abgerufene Daten:", data); // Debugging-Log
+        dispatch({ type: "dataReceived", payload: data });
+      })
+      .catch((err) => {
+        console.error("Fehler beim Abrufen der Daten:", err);
+        dispatch({ type: "dataFailed" });
+      });
   }, []);
   return (
     <div className="app">
