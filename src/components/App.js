@@ -97,7 +97,7 @@ export default function App() {
 
   useEffect(() => {
     // fetch("http://localhost:8000/questions")
-    fetch("/.netlify/functions/questions")
+    fetch("/.netlify/functions/questions.js")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch((err) => dispatch({ type: "dataFailed" }));
