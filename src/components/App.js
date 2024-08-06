@@ -29,7 +29,8 @@ function reducer(state, action) {
     case "dataReceived":
       return {
         ...state,
-        questions: action.payload,
+        // questions: action.payload,
+        questions: action.payload.questions || [], // Sicherstellen, dass `questions` ein Array ist
         status: "ready",
       };
     case "dataFailed":
